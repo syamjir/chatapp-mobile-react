@@ -38,14 +38,13 @@ export const signInUser = createAsyncThunk(
         userEmail,
         password
       );
-      console.log(photo, userName, uid, email);
+
       if (uid && email && dispatch && navigate) {
         dispatch(fetchContacts({ searchEmail: email, currentUserId: uid }));
         navigate("/dashboard");
       }
       return { userName, photo, uid, email };
     } catch (error) {
-      console.log(error);
       return rejectWithValue(error.message); // Handle errors
     }
   }
@@ -139,7 +138,6 @@ const userSlice = createSlice({
         state.error = null;
       })
       .addCase(signUpUser.rejected, (state, action) => {
-        console.log(action.payload);
         state.error =
           action.payload || "There was a problem creating the user!";
         state.status = "idle";
@@ -158,7 +156,6 @@ const userSlice = createSlice({
         state.error = null;
       })
       .addCase(signInUser.rejected, (state, action) => {
-        console.log(action.payload);
         state.error = action.payload || "There was a problem logging in!";
         state.status = "idle";
       })
@@ -178,7 +175,6 @@ const userSlice = createSlice({
           (state.status = "idle");
       })
       .addCase(signOutUser.rejected, (state, action) => {
-        console.log(action.payload);
         state.error = action.payload || "Logout error";
         state.status = "idle";
       });

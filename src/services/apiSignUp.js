@@ -10,7 +10,6 @@ export const handleSignUp = async (email, password, userName, photo) => {
       password
     );
     const user = userCredential.user;
-    console.log(photo, userName);
 
     // Upload the user photo to Firebase Storage (optional)
     if (photo) {
@@ -36,15 +35,7 @@ export const handleSignUp = async (email, password, userName, photo) => {
     // Refresh the user object after updating the profile
     await user.reload();
 
-    // Reload the user to get the updated profile information
-    console.log("User signed up successfully:", user);
-    // Access the created user information
-    // Log all profile information
-    console.log("User Profile Information:");
-    console.log("Display Name:", user.displayName);
-    console.log("Email:", user.email);
-    console.log("UID:", user.uid);
-    console.log("Photo URL:", user.photoURL);
+   
 
     return {
       uid: user.uid,

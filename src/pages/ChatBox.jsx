@@ -76,7 +76,7 @@ function ChatBox() {
     await uploadFileToFirebase(audioBlob, chatId, userId);
   }
 
-  console.log(chatId);
+ 
   useEffect(
     function () {
       dispatch(listenMessages({ chatId }));
@@ -85,7 +85,7 @@ function ChatBox() {
   );
 
   const chatPartner = contactList.find((user) => user.uid === recieverId);
-  console.log(chatPartner);
+ 
   const { displayName, photoURL } = chatPartner;
   const chatPartnerName = displayName === username ? "You" : displayName;
 
@@ -117,8 +117,7 @@ function ChatBox() {
     upload();
   }, [file]);
 
-  console.log(messages);
-  console.log(file);
+  
 
   return (
     <div className="h-screen w-screen grid grid-rows-[auto_1fr_auto]  ">

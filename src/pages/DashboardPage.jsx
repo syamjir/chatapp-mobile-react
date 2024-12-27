@@ -25,7 +25,6 @@ function DashboardPage() {
   function handleFetchContact(e) {
     e.preventDefault();
     if (searchEmail) {
-      console.log(searchEmail);
       dispatch(fetchContacts({ searchEmail, currentUserId }));
       setSearchEmail("");
     }

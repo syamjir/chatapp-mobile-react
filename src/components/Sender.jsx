@@ -6,7 +6,6 @@ import convertTime from "../utils/convertTime";
 //When the user receives a message, they are the recipient.
 
 function Sender({ onMessage }) {
-  console.log(onMessage);
   const { contactList } = useSelector((state) => state.contactList);
   const { text: message, timestamp, senderId, url, type } = onMessage;
   const sender = contactList.find((contact) => contact.uid === senderId);

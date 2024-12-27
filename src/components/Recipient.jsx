@@ -5,11 +5,11 @@ import convertTime from "../utils/convertTime";
 function Recipient({ onMessage }) {
   const { contactList } = useSelector((state) => state.contactList);
   const { text: message, timestamp, senderId, type, url } = onMessage;
-  console.log(onMessage.timestamp);
+
   const recipient = contactList.find((contact) => contact.uid === senderId);
   const { photoURL } = recipient ? recipient : "Unknown user";
   const time = convertTime(timestamp);
-  console.log(time);
+
   return (
     <div className="relative px-6 py-3 mt-3 rounded-r-xl sm:text-lg rounded-b-xl bg-stone-200 font-medium w-fit">
       <img
