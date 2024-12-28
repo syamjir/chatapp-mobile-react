@@ -1,4 +1,3 @@
-import React from "react";
 import useWindowSize from "./hooks/useGetWindowSize";
 
 import "./index.css";

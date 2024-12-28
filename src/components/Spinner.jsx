@@ -1,5 +1,3 @@
-import React from "react";
-
 function Spinner({ onSize, containerPosition = "" }) {
   return (
     <div className={`absolute ${containerPosition}`}>

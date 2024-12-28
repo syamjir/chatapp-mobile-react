@@ -1,4 +1,3 @@
-import React from "react";
 import { BiX } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { signOutUser } from "../redux/user/userSlice";
