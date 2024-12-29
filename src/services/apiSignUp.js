@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { auth, db, storage } from "../firebase/firebase"; // Assume firebase is initialized in another file
+import { auth, db, storage } from "../firebase/firebase";
 import { doc, setDoc } from "firebase/firestore";
 export const handleSignUp = async (email, password, userName, photo) => {
   try {
@@ -11,14 +11,12 @@ export const handleSignUp = async (email, password, userName, photo) => {
     );
     const user = userCredential.user;
 
-    // Upload the user photo to Firebase Storage (optional)
     if (photo) {
       const storageRef = ref(storage, `users/${user.uid}/profile.jpg`);
       await uploadBytes(storageRef, photo);
 
-      // Get the uploaded photo URL
       const photoURL = await getDownloadURL(storageRef);
-      // Add user info to Firestore
+
       await setDoc(doc(db, "users", user.uid), {
         uid: user.uid,
         displayName: userName,
@@ -32,10 +30,8 @@ export const handleSignUp = async (email, password, userName, photo) => {
         photoURL: photoURL,
       });
     }
-    // Refresh the user object after updating the profile
-    await user.reload();
 
-   
+    await user.reload();
 
     return {
       uid: user.uid,
@@ -45,6 +41,6 @@ export const handleSignUp = async (email, password, userName, photo) => {
     };
   } catch (error) {
     console.error("An error occurred during user creation: ", error.message);
-    throw new Error(error.message); // Rethrow the error for further handling if necessary
+    throw new Error(error.message);
   }
 };

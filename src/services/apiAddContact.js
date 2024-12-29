@@ -4,8 +4,6 @@ import { db } from "../firebase/firebase";
 // Add a contact to the current user's contact list
 export const addContact = async (currentUserId, contactId, contactData) => {
   try {
-    // Create a document in the "contacts" sub-collection of the current user
-
     await setDoc(
       doc(db, "users", currentUserId, "contacts", contactId),
       contactData

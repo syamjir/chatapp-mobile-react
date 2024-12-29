@@ -1,5 +1,5 @@
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "../firebase/firebase"; // Firebase Firestore config
+import { db } from "../firebase/firebase";
 
 // Send message to Firestore
 export const handleSendMessage = async (chatId, senderId, text) => {

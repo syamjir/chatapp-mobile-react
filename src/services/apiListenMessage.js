@@ -14,15 +14,13 @@ export const handleListenForMessages = (chatId, onMessagesUpdate) => {
       return {
         id: doc.id,
         ...data,
-        // Convert Firestore timestamp to JavaScript Date object
+
         timestamp: data.timestamp ? data.timestamp.toDate() : null,
       };
     });
 
-    // Pass the messages to a callback or update state
     onMessagesUpdate(messages);
   });
 
-  // Return the unsubscribe function to stop listening when necessary
   return unsubscribe;
 };

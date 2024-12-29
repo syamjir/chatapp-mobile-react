@@ -16,7 +16,7 @@ export const uploadFileToFirebase = async (file, chatId, senderId) => {
       type: file.type.split("/")[0], // e.g., "audio", "video", "application" (for PDF)
       url: downloadUrl,
       timestamp: Timestamp.now(),
-      senderId, // Sender's ID
+      senderId,
     });
 
     console.log(`${file.type.split("/")[0]} uploaded and message sent`);
